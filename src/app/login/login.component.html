@@ -1,0 +1,77 @@
+<section class="vh-100" style="background-image: url('../../assets/Login/images/bgLogin.jpg'); background-position: center top;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block img-fluid" style="border-radius: 1rem 0 0 1rem;background-image: url('../../assets/Login/images/desen.png'); background-position: center top;">
+              <img src="../../assets/Login/images/loginleft.png"><img/>
+                <h2 class="d-none d-sm-block">OTC Depom olarak, en uygun ve en hijyenik depolama şartlarını, kalite politikamız doğrultusunda sağlayarak, müşterilerimize hızlı ve kaliteli hizmet sunmaktayız...</h2> 
+              
+                <div>
+                  <div>
+                      <i class="fa fa-map-marker"></i><span>Aydınlar Mah.  Güney Kıyıboyu Cad. No:335/SEYHAN Adana</span>
+                  </div>
+                  <div>
+                      <i class="fa fa-envelope"></i><span>infootcdepom.com.tr</span>
+                  </div>
+                  <div>
+                      <i class="fa fa-phone"></i><span>(0552) 322 2242</span>
+                  </div>
+              </div> 
+              
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form>
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    
+                    <img src='../../assets/Login/images/logoOTCDepom.png'
+                alt="login form" class="img-fluid"  />
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sitemize üye iseniz, bilgilerinizi girerek sipariş işlemlerinizi kolayca gerçekleştirebilirsiniz.</h5>
+
+                  <form  [formGroup]="loginForms" (ngSubmit)="functFormSubmit()">
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="loginMailAddress" formControlName="loginMailAddress" class="form-control form-control-lg" placeholder="GLN ya da Mail " />
+                    
+                    <label class="form-label" for="loginMailAddress">Email ya da GLN</label>
+                    <div class="alert alert-danger" data-valmsg-for="loginMailAddress" data-valmsg-replace="true" *ngIf="!loginForms.controls['loginMailAddress'].valid &&(loginForms.controls['loginMailAddress'].dirty || loginForms.controls['loginMailAddress'].touched)">
+                                      
+                      <span *ngIf="loginForms.controls['loginMailAddress'].errors?.['required']">* Boş Bırakılamaz</span>
+                      <span *ngIf="loginForms.controls['loginMailAddress'].errors?.['email']">* Lütfen mail adresinizi giriniz.</span>
+                    </div>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="loginPassword"  formControlName="loginPassword" class="form-control form-control-lg" placeholder="Şifreniz" />
+                    <label class="form-label" for="loginPassword">Şifreniz</label>
+                    <div class="alert alert-danger" data-valmsg-for="loginPassword" data-valmsg-replace="true" *ngIf="!loginForms.controls['loginPassword'].valid &&(loginForms.controls['loginPassword'].dirty || loginForms.controls['loginPassword'].touched)">
+                      <span *ngIf="loginForms.controls['loginPassword'].errors?.['required']">* Boş Bırakılamaz</span>
+                      
+                    </div>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit">Giriş Yap</button>
+                  </div>
+                </form>
+                  <a class="small text-muted" href="#!">Şifremi Unuttum?</a>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Bir Hesabınız var mı? <a href="#!"
+                      style="color: #393f81;">Hemen Üye Ol</a></p>
+                  <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

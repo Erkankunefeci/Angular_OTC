@@ -1,0 +1,37 @@
+
+.img-fluid span {
+    
+    padding-right: 15px;
+    color: #fff;
+    font-size: 11px;
+    
+}
+.img-fluid img {
+ 
+padding-left: 35px;
+ 
+padding-top: 65px;
+}
+.img-fluid h2
+{   padding-left: 25px;
+    padding-top: 15%;
+    padding-right: 25px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 21px;
+}
+.img-fluid div:first-child{
+    padding-top: 10%;
+    
+}
+.img-fluid i {
+    font-size: 18px;
+    color: orange;
+    padding-left: 25px;
+    padding-top: 35px;
+    padding-right: 2px;
+}
+.form-outline,span{
+    width: 100%;
+
+}
