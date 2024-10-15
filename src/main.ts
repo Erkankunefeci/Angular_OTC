@@ -15,7 +15,7 @@ bootstrapApplication(AppComponent,
   {
     providers: [
   importProvidersFrom(HttpClientModule,BrowserModule,JwtModule.forRoot({config:{tokenGetter:()=>localStorage.getItem("token"),
-  allowedDomains:["localhost:8080"]
+  allowedDomains:["localhost:80"]
 }})),
   
   provideRouter(routes, 
