@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
   {providedIn: 'root'}
 )
 export class CustomHttpService {
-  isAuthenticated: boolean = false;
+ 
   constructor(private httpClient: HttpClient,@Inject('BASE_API_URL') private baseUrl: string) {}
 
   public makeGetRequest<T>(url: string): Observable<T | null> {

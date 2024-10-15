@@ -1,26 +1,12 @@
 
-
-
-
-
-<div  class="rev_slider_wrapper fullscreen-container"  style="background-color:transparent;padding:0px;">
-    <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
-    
-    <div  class="slider-dots rev_slider fullscreenbanner" >
-        <ul>  
-            <ng-container  *ngFor="let sl of slided">
-            <!-- SLIDE  -->
-            <li >
-                <!-- MAIN IMAGE -->
-                <img src='https://otcdepom.com.tr{{sl.picture}}'  alt=""     class="rev-slidebg" >
-               
-                                               
-            </li>
-        </ng-container>
-            <!-- SLIDE  -->
-                                                        
-        </ul>
-            
-    </div>
-
-</div>
+<ngb-carousel >
+    <ng-template ngbSlide *ngFor="let slide of slided" >
+        <div class="picsum-img-wrapper">
+            <img [src]="slide.picture" alt="Random first slide" />
+        </div>
+        <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+    </ng-template>
+</ngb-carousel>

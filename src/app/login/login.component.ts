@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Meta, Title } from '@angular/platform-browser';
+import { BrowserModule, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CustomHttpService } from '../service/custom-http.service';
 import { JwtService } from '../service/jwt.service';
 import { CommonModule } from '@angular/common';
 import { GeneralSetting } from '../Enttity/general-setting';
 import { Token } from '../Enttity/token';
-import { error } from 'console';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports:[CommonModule,ReactiveFormsModule,RouterModule],
+  imports:[CommonModule,ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.min.css'
 })
@@ -43,27 +43,37 @@ export class LoginComponent implements OnInit {
     console.log("gn",this.genel)
     });
   }
-  functFormSubmit() {
+functFormSubmit():boolean {
 
-    
+ // var dd=this._activatedRoute.snapshot.paramMap.get("returnUrl");
+var dd='';
+this._activatedRoute.paramMap.subscribe(params=>{dd=params.get("returnUrl");console.log("urd",dd)
+})
     if( this.loginForms.valid)
      {
+     //debugger;
+     this.customservice.makeGetRequest<Token>("/Member/TokenSign/?loginMailAddress="+this.loginForms.value.loginMailAddress+"&loginPassword="+this.loginForms.value.loginPassword)
+     .subscribe({next: (x)=> {this.tok = x as Token ; console.log("token",x); console.log("girdi",this.tok); 
+      if(this.tok!=null)
+     {
+      localStorage.setItem("token",this.tok.tokens);
+      console.log("storage",localStorage.getItem("token"))
+
+      
+      console.log("dd",dd);
+      if(dd==null || dd=='undefined') { this.route.navigate(['']) ; }
+      else{ this.route.navigate([dd],{replaceUrl:true});debugger; }
+     // this.route.navigate([this._activatedRoute.snapshot.paramMap.get("returnUrl")==null?['/home']:this._activatedRoute.snapshot.paramMap.get("returnUrl")]);
+      
+      //debugger
+      //return false;
+       
+     }},error:(v)=>{console.log("hata",v);return false}})
      
-      this.customservice.makeGetRequest<Token>("/SSO/ticket?loginMailAddress="+this.loginForms.value.loginMailAddress+"&loginPassword="+this.loginForms.value.loginPassword).subscribe(x => { this.tok = x as Token ;this.tok.tokens!=null?this.customservice.isAuthenticated=true:this.customservice.isAuthenticated=false},error=> console.log("hata",error));
-      console.log("girdi",this.tok)
-    
-  if(this.customservice.isAuthenticated)
-    { localStorage.setItem('token', this.tok.tokens);
-      console.log("tk",this.tok.tokens);
-      this.route.navigate(['']);
-  
-   return true;
-    }
-  else
-  return false;
+   
+  return true;
   }
-   else
-   return false;
+
    }
 
 }
